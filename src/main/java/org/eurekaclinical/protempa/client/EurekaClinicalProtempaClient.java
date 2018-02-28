@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.eurekaclinical.protempa.client.client;
+package org.eurekaclinical.protempa.client;
 
 import com.google.inject.Inject;
 import com.sun.jersey.api.client.ClientResponse;
@@ -27,6 +27,7 @@ import com.sun.jersey.core.util.MultivaluedMapImpl;
 import com.sun.jersey.multipart.FormDataBodyPart;
 import com.sun.jersey.multipart.FormDataMultiPart;
 
+
 import org.eurekaclinical.protempa.client.comm.EtlCohortDestination;
 import org.eurekaclinical.protempa.client.comm.EtlDestination;
 import org.eurekaclinical.protempa.client.comm.EtlI2B2Destination;
@@ -35,7 +36,7 @@ import org.eurekaclinical.protempa.client.comm.EtlPatientSetSenderDestination;
 import org.eurekaclinical.protempa.client.comm.EtlTabularFileDestination;
 import org.eurekaclinical.protempa.client.comm.JobRequest;
 import org.eurekaclinical.protempa.client.comm.ValidationRequest;
-
+import org.eurekaclinical.protempa.client.json.ObjectMapperProvider;
 import org.eurekaclinical.eureka.client.comm.DestinationType;
 import org.eurekaclinical.eureka.client.comm.Job;
 import org.eurekaclinical.eureka.client.comm.JobFilter;
@@ -50,12 +51,13 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriBuilder;
 import org.eurekaclinical.common.comm.Role;
 import org.eurekaclinical.common.comm.clients.ClientException;
+import org.eurekaclinical.common.comm.clients.EurekaClinicalClient;
 import org.protempa.PropositionDefinition;
 
 /**
  * @author hrathod
  */
-public class ProtempaClient extends EurekaClient {
+public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 
 	private static final GenericType<List<Job>> JobListType = new GenericType<List<Job>>() {
 	};
@@ -95,8 +97,10 @@ public class ProtempaClient extends EurekaClient {
 	private final URI resourceUrl;
 
 	@Inject
-	public ProtempaClient(String inEtlUrl) {
+	public EurekaClinicalProtempaClient(String inEtlUrl) {
+		super(ObjectMapperProvider.class);
 		this.resourceUrl = URI.create(inEtlUrl);
+		
 	}
 
 	@Override
