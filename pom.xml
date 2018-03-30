@@ -4,7 +4,7 @@
     <groupId>org.eurekaclinical</groupId>
     <artifactId>eurekaclinical-protempa-client</artifactId>
     <name>Eureka! Clinical Protempa Client</name>
-    <version>1.0-Alpha-1</version>
+    <version>1.0-Alpha-2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <inceptionYear>2018</inceptionYear>
 
@@ -20,7 +20,7 @@
         <connection>scm:git:https://github.com/eurekaclinical/eurekaclinical-protempa-client.git</connection>
         <developerConnection>scm:git:https://github.com/eurekaclinical/eurekaclinical-protempa-client.git</developerConnection>
         <url>https://github.com/eurekaclinical/eurekaclinical-protempa-client.git</url>
-        <tag>eurekaclinical-protempa-client-1.0-Alpha-1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
