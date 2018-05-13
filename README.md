@@ -1,7 +1,7 @@
 # Eureka! Clinical Protempa Client
 [Georgia Clinical and Translational Science Alliance (Georgia CTSA)](http://www.georgiactsa.org), [Emory University](http://www.emory.edu), Atlanta, GA
 
-It provides a REST API client, `org.eurekaclinical.protempa.client.Client.java`, for calling the eurekaclinical-protempa-service's REST APIs.
+It provides a REST API client, `org.eurekaclinical.protempa.client.EurekaClinicalProtempaClient.java`, for calling the eurekaclinical-protempa-service's REST APIs.
 
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-protempa-client/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-protempa-client)
 
