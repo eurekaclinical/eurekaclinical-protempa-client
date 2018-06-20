@@ -5,7 +5,8 @@ It provides a REST API client, `org.eurekaclinical.protempa.client.EurekaClinica
 
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-protempa-client/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-protempa-client)
 
-No final releases yet
+## Version 1.0
+Initial release.
 
 * [Oracle Java JDK 8](http://www.oracle.com/technetwork/java/javase/overview/index.html)
 * [Maven 3.2.5 or greater](https://maven.apache.org)
