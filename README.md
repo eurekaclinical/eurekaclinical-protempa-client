@@ -4,7 +4,6 @@
 ## What does it do?
 It provides a REST API client, `org.eurekaclinical.protempa.client.EurekaClinicalProtempaClient.java`, for calling the eurekaclinical-protempa-service's REST APIs.
 
-## Version 1.0 development series
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-protempa-client/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-protempa-client)
 
 ## Version 1.0
