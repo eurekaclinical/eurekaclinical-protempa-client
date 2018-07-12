@@ -25,3 +25,4 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
 public abstract class SourceIdMixin {
 
 }
+
