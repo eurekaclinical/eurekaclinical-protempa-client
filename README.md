@@ -6,6 +6,11 @@ It provides a REST API client, `org.eurekaclinical.protempa.client.EurekaClinica
 
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-protempa-client/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-protempa-client)
 
+## Version 2.0
+Added user template comm object.
+Added ID pool comm objects.
+Depends on new major release of Protempa.
+
 ## Version 1.0
 Initial release.
 
