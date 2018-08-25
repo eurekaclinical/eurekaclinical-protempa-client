@@ -19,21 +19,23 @@ package org.eurekaclinical.protempa.client.comm;
  * limitations under the License.
  * #L%
  */
-
 /**
  *
  * @author Andrew Post
  */
 public interface EtlDestinationVisitor {
-	void visit(EtlCohortDestination etlCohortDestination);
-	
-	void visit(EtlI2B2Destination etlI2B2Destination);
-	
-	void visit(EtlNeo4jDestination etlNeo4jDestination);
-	
-	void visit(EtlPatientSetExtractorDestination etlPatientSetExtractorDestination);
-	
-	void visit(EtlPatientSetSenderDestination etlPatientSetSenderDestination);
-	
-	void visit(EtlTabularFileDestination etlTabularFileDestination);
+
+    void visit(EtlCohortDestination etlCohortDestination);
+
+    void visit(EtlI2B2Destination etlI2B2Destination);
+
+    void visit(EtlNeo4jDestination etlNeo4jDestination);
+
+    void visit(EtlPatientSetExtractorDestination etlPatientSetExtractorDestination);
+
+    void visit(EtlPatientSetSenderDestination etlPatientSetSenderDestination);
+
+    void visit(EtlTabularFileDestination etlTabularFileDestination);
+    
+    void visit(EtlPatientListDestination etlPatientListDestination);
 }

@@ -21,25 +21,25 @@ import org.eurekaclinical.eureka.client.comm.Cohort;
  * limitations under the License.
  * #L%
  */
-
 /**
  *
  * @author Andrew Post
  */
 public class EtlCohortDestination extends EtlDestination {
+
     private Cohort cohort;
-	
-	public Cohort getCohort() {
-		return cohort;
-	}
 
-	public void setCohort(Cohort cohort) {
-		this.cohort = cohort;
-	}
+    public Cohort getCohort() {
+        return cohort;
+    }
 
-	@Override
-	public void accept(EtlDestinationVisitor etlDestinationVisitor) {
-		etlDestinationVisitor.visit(this);
-	}
+    public void setCohort(Cohort cohort) {
+        this.cohort = cohort;
+    }
+
+    @Override
+    public void accept(EtlDestinationVisitor etlDestinationVisitor) {
+        etlDestinationVisitor.visit(this);
+    }
 
 }

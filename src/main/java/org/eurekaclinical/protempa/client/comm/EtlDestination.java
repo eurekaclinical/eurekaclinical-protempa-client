@@ -46,7 +46,8 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
 		@JsonSubTypes.Type(value = EtlNeo4jDestination.class, name = "NEO4J"),
 		@JsonSubTypes.Type(value = EtlPatientSetExtractorDestination.class, name="PATIENTSETEXTRACTOR"),
 		@JsonSubTypes.Type(value = EtlPatientSetSenderDestination.class, name="PATIENTSETSENDER"),
-		@JsonSubTypes.Type(value = EtlTabularFileDestination.class, name="TABULARFILE")
+		@JsonSubTypes.Type(value = EtlTabularFileDestination.class, name="TABULARFILE"),
+                @JsonSubTypes.Type(value = EtlPatientListDestination.class, name="PATIENTLIST")
 })
 public abstract class EtlDestination {
 
