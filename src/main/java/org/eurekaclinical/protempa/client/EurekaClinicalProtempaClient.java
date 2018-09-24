@@ -34,7 +34,6 @@ import org.eurekaclinical.protempa.client.comm.EtlI2B2Destination;
 import org.eurekaclinical.protempa.client.comm.EtlPatientSetExtractorDestination;
 import org.eurekaclinical.protempa.client.comm.EtlPatientSetSenderDestination;
 import org.eurekaclinical.protempa.client.comm.EtlTabularFileDestination;
-import org.eurekaclinical.protempa.client.comm.JobRequest;
 import org.eurekaclinical.protempa.client.comm.ValidationRequest;
 import org.eurekaclinical.protempa.client.json.ObjectMapperProvider;
 import org.eurekaclinical.eureka.client.comm.DestinationType;
@@ -52,6 +51,8 @@ import javax.ws.rs.core.UriBuilder;
 import org.eurekaclinical.common.comm.Role;
 import org.eurekaclinical.common.comm.clients.ClientException;
 import org.eurekaclinical.common.comm.clients.EurekaClinicalClient;
+import org.eurekaclinical.eureka.client.comm.JobSpec;
+import org.eurekaclinical.protempa.client.comm.JobRequest;
 import org.protempa.PropositionDefinition;
 
 /**
@@ -191,9 +192,10 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 		doDelete(path);
 	}
 
-	public Long submitJob(JobRequest inJobRequest) throws ClientException {
+	public Long submitJob(JobSpec inJobSpec) throws ClientException {
 		final String path = "/api/protected/jobs";
-		URI jobUri = doPostCreate(path, inJobRequest);
+		URI jobUri = doPostCreate(path, inJobSpec);
+                
 		return extractId(jobUri);
 	}
 
