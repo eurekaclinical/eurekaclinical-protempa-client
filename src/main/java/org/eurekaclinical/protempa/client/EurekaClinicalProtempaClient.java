@@ -57,6 +57,7 @@ import org.eurekaclinical.eureka.client.comm.I2B2Destination;
 import org.eurekaclinical.eureka.client.comm.JobSpec;
 import org.eurekaclinical.eureka.client.comm.PatientSetExtractorDestination;
 import org.eurekaclinical.eureka.client.comm.PatientSetSenderDestination;
+import org.eurekaclinical.eureka.client.comm.SourceConfigParams;
 import org.eurekaclinical.eureka.client.comm.TabularFileDestination;
 import org.eurekaclinical.protempa.client.comm.JobRequest;
 import org.protempa.PropositionDefinition;
@@ -75,6 +76,8 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 	private static final GenericType<List<SourceConfig>> SourceConfigListType
 			= new GenericType<List<SourceConfig>>() {
 			};
+        private static final GenericType<List<SourceConfigParams>> SourceConfigParamsList = new GenericType<List<SourceConfigParams>>() {
+        };
 	private static final GenericType<List<Destination>> DestinationListType
 			= new GenericType<List<Destination>>() {
 			};
@@ -117,17 +120,23 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 
 	public List<SourceConfig> getSourceConfigs() throws
 			ClientException {
-		final String path = "/api/protected/sourceconfigs";
+		final String path = "/api/protected/sourceconfig";
 		return doGet(path, SourceConfigListType);
 	}
 
 	public SourceConfig getSourceConfig(String sourceConfigId) throws
 			ClientException {
-		String path = UriBuilder.fromPath("/api/protected/sourceconfigs/")
+		String path = UriBuilder.fromPath("/api/protected/sourceconfig/")
 				.segment(sourceConfigId)
 				.build().toString();
 		return doGet(path, SourceConfig.class);
 	}
+        
+        public List<SourceConfigParams> getSourceConfigParams() throws ClientException {
+                String path = "/api/protected/sourceconfig/parameters/list";
+                return doGet(path, SourceConfigParamsList);
+        }
+
 
 	public List<Destination> getDestinations() throws
 			ClientException {
