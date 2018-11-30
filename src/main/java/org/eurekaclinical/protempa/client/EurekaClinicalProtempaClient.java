@@ -44,9 +44,11 @@ import org.eurekaclinical.eureka.client.comm.Statistics;
 
 import java.io.InputStream;
 import java.net.URI;
+import java.util.Collections;
 import java.util.List;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import org.eurekaclinical.common.comm.Role;
 import org.eurekaclinical.common.comm.clients.ClientException;
@@ -58,8 +60,10 @@ import org.eurekaclinical.eureka.client.comm.JobSpec;
 import org.eurekaclinical.eureka.client.comm.PatientSetExtractorDestination;
 import org.eurekaclinical.eureka.client.comm.PatientSetSenderDestination;
 import org.eurekaclinical.eureka.client.comm.SourceConfigParams;
+import org.eurekaclinical.eureka.client.comm.SystemPhenotype;
 import org.eurekaclinical.eureka.client.comm.TabularFileDestination;
 import org.eurekaclinical.protempa.client.comm.JobRequest;
+import org.eurekaclinical.standardapis.exception.HttpStatusException;
 import org.protempa.PropositionDefinition;
 
 /**
@@ -104,6 +108,8 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 			};
 	private static final GenericType<List<Role>> RoleList = new GenericType<List<Role>>() {
 	};
+        private static final GenericType<List<SystemPhenotype>> SystemPhenotypeList = new GenericType<List<SystemPhenotype>>() {
+        };
 	private final URI resourceUrl;
 
 	@Inject
@@ -269,7 +275,7 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 			String sourceConfigId, String inKey) throws ClientException {
 		MultivaluedMap<String, String> formParams = new MultivaluedMapImpl();
 		formParams.add("key", inKey);
-		String path = UriBuilder.fromPath("/api/protected/concepts/")
+		String path = UriBuilder.fromPath("/api/protected/conceptsbyconfigid/")
 				.segment(sourceConfigId)
 				.build().toString();
 		List<PropositionDefinition> propDefs = doPost(path, formParams, PropositionDefinitionList);
@@ -300,7 +306,7 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 			formParams.add("key", key);
 		}
 		formParams.add("withChildren", withChildren.toString());
-		String path = UriBuilder.fromPath("/api/protected/concepts/")
+		String path = UriBuilder.fromPath("/api/protected/conceptsbyconfigid/")
 				.segment(sourceConfigId)
 				.build().toString();
 		return doPost(path, formParams, PropositionDefinitionList);
@@ -328,7 +334,7 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 	public List<String> getPropositionSearchResults(String sourceConfigId,
 			String inSearchKey) throws ClientException {
 
-		String path = UriBuilder.fromPath("/api/protected/concepts/search/")
+		String path = UriBuilder.fromPath("/api/protected/conceptsbyconfigid/search/")
 				.segment(sourceConfigId)
 				.segment(inSearchKey)
 				.build().toString();
@@ -338,13 +344,41 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 	public List<PropositionDefinition> getPropositionSearchResultsBySearchKey(String sourceConfigId,
 			String inSearchKey) throws ClientException {
 
-		String path = UriBuilder.fromPath("/api/protected/concepts/propsearch/")
+		String path = UriBuilder.fromPath("/api/protected/conceptsbyconfigid/propsearch/")
 				.segment(sourceConfigId)
 				.segment(inSearchKey)
 				.build().toString();
 		return doGet(path, PropositionDefinitionList);
 	}
 
+        public List<SystemPhenotype> getSystemPhenotypes() throws ClientException {
+            final String path = UriBuilder.fromPath("/api/protected/concepts/").build().toString();
+            return doGet(path, SystemPhenotypeList);
+        }
+
+        public List<SystemPhenotype> getSystemPhenotypes(List<String> inKeys, boolean summarize) throws ClientException {
+            if (inKeys == null) {
+                throw new IllegalArgumentException("inKeys cannot be null");
+            }
+            MultivaluedMap<String, String> formParams = new MultivaluedMapImpl();
+            for (String key : inKeys) {
+                formParams.add("key", key);
+            }
+            formParams.add("summarize", Boolean.toString(summarize));
+            String path = UriBuilder.fromPath("/api/protected/concepts/")
+                    .build().toString();
+            return doPost(path, formParams, SystemPhenotypeList);
+        }
+
+        public SystemPhenotype getSystemPhenotype(String inKey, boolean summarize) throws ClientException {
+            List<SystemPhenotype> result = getSystemPhenotypes(Collections.singletonList(inKey), summarize);
+            if (result.isEmpty()) {
+                throw new HttpStatusException(Response.Status.NOT_FOUND);
+            } else {
+                return result.get(0);
+            }
+        }        
+        
 	public ClientResponse getOutput(String destinationId) throws ClientException {
 		String path = UriBuilder.fromPath("/api/protected/output/")
 				.segment(destinationId)
