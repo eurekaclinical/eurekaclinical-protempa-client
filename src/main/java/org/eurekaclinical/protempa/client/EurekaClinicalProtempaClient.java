@@ -53,6 +53,7 @@ import javax.ws.rs.core.UriBuilder;
 import org.eurekaclinical.common.comm.Role;
 import org.eurekaclinical.common.comm.clients.ClientException;
 import org.eurekaclinical.common.comm.clients.EurekaClinicalClient;
+import org.eurekaclinical.eureka.client.comm.AOUParticipantDestination;
 import org.eurekaclinical.eureka.client.comm.CohortDestination;
 import org.eurekaclinical.eureka.client.comm.Destination;
 import org.eurekaclinical.eureka.client.comm.I2B2Destination;
@@ -110,7 +111,9 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 	};
         private static final GenericType<List<SystemPhenotype>> SystemPhenotypeList = new GenericType<List<SystemPhenotype>>() {
         };
-	private final URI resourceUrl;
+        private static final GenericType<List<AOUParticipantDestination>> AOUParticipantDestinationType = new GenericType<List<AOUParticipantDestination>>() {
+        };
+    private final URI resourceUrl;
 
 	@Inject
 	public EurekaClinicalProtempaClient(String inEtlUrl) {
@@ -398,13 +401,20 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 		return doGet(path, RoleList);
 	}
 
-	public Role getRole(Long inRoleId) throws ClientException {
-		final String path = "/api/protected/roles/" + inRoleId;
-		return doGet(path, Role.class);
-	}
-	
-	public Role getRoleByName(String name) throws ClientException {
-		return doGet("/api/protected/roles/byname/" + name, Role.class);
-	}
+    public Role getRole(Long inRoleId) throws ClientException {
+        final String path = "/api/protected/roles/" + inRoleId;
+        return doGet(path, Role.class);
+    }
+    
+    public Role getRoleByName(String name) throws ClientException {
+        return doGet("/api/protected/roles/byname/" + name, Role.class);
+    }
+    
+    public List<AOUParticipantDestination> getAouParticipantDestinations() throws ClientException {
+        final String path = "/api/protected/destinations/";
+        MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
+        queryParams.add("type", DestinationType.AOU_PARTICIPANT.name());
+        return doGet(path, queryParams, AOUParticipantDestinationType);
+    }
 
 }

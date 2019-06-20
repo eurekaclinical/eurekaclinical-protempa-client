@@ -1,10 +1,10 @@
 package org.eurekaclinical.protempa.client.comm;
 
-/*
+/*-
  * #%L
- * Eureka Common
+ * Eureka! Client
  * %%
- * Copyright (C) 2012 - 2014 Emory University
+ * Copyright (C) 2016 Emory University
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,21 +24,11 @@ package org.eurekaclinical.protempa.client.comm;
  *
  * @author Andrew Post
  */
-public class EtlNeo4jDestination extends EtlDestination {
-	
-	private String dbPath;
-
-	public String getDbPath() {
-		return dbPath;
-	}
-
-	public void setDbPath(String dbPath) {
-		this.dbPath = dbPath;
-	}
-
-	@Override
-	public void accept(EtlDestinationVisitor etlDestinationVisitor) {
-		etlDestinationVisitor.visit(this);
-	}
-
+public class EtlAouParticipantDestination extends EtlDestination {
+    
+    @Override
+    public void accept(EtlDestinationVisitor destinationVisitor) {
+        destinationVisitor.visit(this);
+    }
+    
 }

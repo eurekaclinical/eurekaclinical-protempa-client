@@ -38,4 +38,6 @@ public interface EtlDestinationVisitor {
     void visit(EtlTabularFileDestination etlTabularFileDestination);
     
     void visit(EtlPatientListDestination etlPatientListDestination);
+    
+    void visit(EtlAouParticipantDestination etlAouParticipantDestination);
 }
