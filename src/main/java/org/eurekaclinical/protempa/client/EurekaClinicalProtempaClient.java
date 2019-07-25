@@ -126,20 +126,20 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 
 	public List<SourceConfig> getSourceConfigs() throws
 			ClientException {
-		final String path = "/api/protected/sourceconfig";
+		final String path = "/api/protected/sourceconfigs";
 		return doGet(path, SourceConfigListType);
 	}
 
 	public SourceConfig getSourceConfig(String sourceConfigId) throws
 			ClientException {
-		String path = UriBuilder.fromPath("/api/protected/sourceconfig/")
+		String path = UriBuilder.fromPath("/api/protected/sourceconfigs/")
 				.segment(sourceConfigId)
 				.build().toString();
 		return doGet(path, SourceConfig.class);
 	}
         
         public List<SourceConfigParams> getSourceConfigParams() throws ClientException {
-                String path = "/api/protected/sourceconfig/parameters/list";
+                String path = "/api/protected/sourceconfigs/parameters/list";
                 return doGet(path, SourceConfigParamsList);
         }
 
