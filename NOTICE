@@ -13,6 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 This project includes:
+  ActiveMQ :: Client under Apache License, Version 2.0
   AntLR Parser Generator under BSD License
   AOP alliance under Public Domain
   Apache Commons CLI under Apache License, Version 2.0
@@ -34,11 +35,13 @@ This project includes:
   Google Guice - Extensions - JNDI under The Apache Software License, Version 2.0
   Google Guice - Extensions - Persist under The Apache Software License, Version 2.0
   Google Guice - Extensions - Servlet under The Apache Software License, Version 2.0
+  hawtbuf under The Apache Software License, Version 2.0
   Hibernate Commons Annotations under GNU Lesser General Public License
   Hibernate JPA 2 Metamodel Generator under GNU Lesser General Public License
   Hibernate JPA Support under GNU Lesser General Public License
   HttpClient under Apache License
   HttpCore under Apache License
+  J2EE Management 1.1 under The Apache Software License, Version 2.0
   Jackson under The Apache Software License, Version 2.0
   Java Annotation Indexer under Apache License, Version 2.0
   Java Persistence API, Version 2.1 under Eclipse Public License (EPL), Version 1.0 or Eclipse Distribution License (EDL), Version 1.0
@@ -57,6 +60,8 @@ This project includes:
   jersey-server under CDDL 1.1 or GPL2 w/ CPE
   jersey-servlet under CDDL 1.1 or GPL2 w/ CPE
   Jettison under Apache License, Version 2.0
+  JMS 1.1 under The Apache Software License, Version 2.0
+  JMS API under CDDL + GPLv2 with classpath exception
   JSR-250 Common Annotations for the JavaTM Platform under COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
   jsr311-api under CDDL License
   JTA 1.1 under The Apache Software License, Version 2.0
