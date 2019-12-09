@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
@@ -40,6 +41,7 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
  *
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonIgnoreProperties
 @JsonSubTypes({
         @JsonSubTypes.Type(value = EtlCohortDestination.class, name = "COHORT"),
         @JsonSubTypes.Type(value = EtlI2B2Destination.class, name = "I2B2"),
@@ -47,7 +49,8 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
 		@JsonSubTypes.Type(value = EtlPatientSetExtractorDestination.class, name="PATIENTSETEXTRACTOR"),
 		@JsonSubTypes.Type(value = EtlPatientSetSenderDestination.class, name="PATIENTSETSENDER"),
 		@JsonSubTypes.Type(value = EtlTabularFileDestination.class, name="TABULARFILE"),
-                @JsonSubTypes.Type(value = EtlPatientListDestination.class, name="PATIENTLIST")
+		@JsonSubTypes.Type(value = EtlOmopDestination.class, name="OMOP"),
+        @JsonSubTypes.Type(value = EtlPatientListDestination.class, name="PATIENTLIST")
 })
 public abstract class EtlDestination {
 
