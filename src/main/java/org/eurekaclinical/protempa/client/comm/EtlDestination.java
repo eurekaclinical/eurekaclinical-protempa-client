@@ -49,8 +49,9 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
 		@JsonSubTypes.Type(value = EtlPatientSetExtractorDestination.class, name="PATIENTSETEXTRACTOR"),
 		@JsonSubTypes.Type(value = EtlPatientSetSenderDestination.class, name="PATIENTSETSENDER"),
 		@JsonSubTypes.Type(value = EtlTabularFileDestination.class, name="TABULARFILE"),
-		@JsonSubTypes.Type(value = EtlOmopDestination.class, name="OMOP"),
-        @JsonSubTypes.Type(value = EtlPatientListDestination.class, name="PATIENTLIST")
+		@JsonSubTypes.Type(value = EtlOmopDestination.class, name="AOUPARTICIPANT"),
+        @JsonSubTypes.Type(value = EtlPatientListDestination.class, name="PATIENTLIST"),
+        @JsonSubTypes.Type(value = EtlPhenotypeSearchDestination.class, name="PHENOTYPESEARCH")
 })
 public abstract class EtlDestination {
 
