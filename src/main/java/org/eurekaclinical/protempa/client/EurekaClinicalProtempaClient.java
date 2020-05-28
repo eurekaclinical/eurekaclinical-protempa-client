@@ -57,8 +57,10 @@ import org.eurekaclinical.eureka.client.comm.CohortDestination;
 import org.eurekaclinical.eureka.client.comm.Destination;
 import org.eurekaclinical.eureka.client.comm.I2B2Destination;
 import org.eurekaclinical.eureka.client.comm.JobSpec;
+import org.eurekaclinical.eureka.client.comm.OmopDestination;
 import org.eurekaclinical.eureka.client.comm.PatientSetExtractorDestination;
 import org.eurekaclinical.eureka.client.comm.PatientSetSenderDestination;
+import org.eurekaclinical.eureka.client.comm.PhenotypeSearchDestination;
 import org.eurekaclinical.eureka.client.comm.SourceConfigParams;
 import org.eurekaclinical.eureka.client.comm.SystemPhenotype;
 import org.eurekaclinical.eureka.client.comm.TabularFileDestination;
@@ -99,6 +101,12 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 			};
 	private static final GenericType<List<TabularFileDestination>> TabularFileDestinationListType
 			= new GenericType<List<TabularFileDestination>>() {
+			};
+	private static final GenericType<List<OmopDestination>> OmopDestinationListType
+			= new GenericType<List<OmopDestination>>() {
+			};
+	private static final GenericType<List<PhenotypeSearchDestination>> phenotypeSearchDestinationListType
+			= new GenericType<List<PhenotypeSearchDestination>>() {
 			};
 	private static final GenericType<List<PropositionDefinition>> PropositionDefinitionList
 			= new GenericType<List<PropositionDefinition>>() {
@@ -185,6 +193,20 @@ public class EurekaClinicalProtempaClient extends EurekaClinicalClient{
 		MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
 		queryParams.add("type", DestinationType.TABULAR_FILE.name());
 		return doGet(path, queryParams, TabularFileDestinationListType);
+	}
+	
+	public List<OmopDestination> getOmopDestinations() throws ClientException {
+		final String path = "/api/protected/destinations/";
+		MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
+		queryParams.add("type", DestinationType.AOU_PARTICIPANT.name());
+		return doGet(path, queryParams, OmopDestinationListType);
+	}
+	
+	public List<PhenotypeSearchDestination> getPhenotypeSearchDestinations() throws ClientException {
+		final String path = "/api/protected/destinations/";
+		MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
+		queryParams.add("type", DestinationType.PHENOTYPE_SEARCH.name());
+		return doGet(path, queryParams, phenotypeSearchDestinationListType);
 	}
 
 	public Destination getDestination(String destId) throws
