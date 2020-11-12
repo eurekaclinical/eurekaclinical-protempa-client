@@ -42,4 +42,6 @@ public interface EtlDestinationVisitor {
     void visit(EtlOmopDestination etlOmopDestination);
     
     void visit(EtlPhenotypeSearchDestination etlPhenotypeSearchDestination);
+    
+    void visit(EtlCovidOmopDestination etlCovidOmopDestination);
 }
